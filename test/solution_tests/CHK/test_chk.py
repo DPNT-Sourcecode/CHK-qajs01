@@ -13,5 +13,3 @@ class TestChk():
         assert checkout_solution.checkout("EEEBB") == 150
         assert checkout_solution.checkout("EEEBBB") == 165
         assert checkout_solution.checkout("AFFFFF") == 90
-
-

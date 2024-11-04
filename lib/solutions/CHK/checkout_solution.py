@@ -1,24 +1,24 @@
-
+# Set sku and price list
+sku_set = {'A', 'B', 'C', 'D', 'E', 'F'}
+prices = {
+    'A': 50,
+    'B': 30,
+    'C': 20,
+    'D': 15,
+    'E': 40,
+    'F': 10
+}
 
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
     # Check invalid input
-    sku_set = {'A', 'B', 'C', 'D', 'E', 'F'}
     if not sku_set.issuperset(skus):
         return -1
 
     # Get basket information
     basket = {item: skus.count(item) for item in sku_set}
-    # Set price list
-    prices = {
-        'A': 50,
-        'B': 30,
-        'C': 20,
-        'D': 15,
-        'E': 40,
-        'F': 10
-    }
+    
     checkout_value = 0
 
     # Special offer for item A
@@ -39,7 +39,3 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
-
-
-
-
