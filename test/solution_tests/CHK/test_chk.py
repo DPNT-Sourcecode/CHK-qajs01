@@ -3,9 +3,12 @@ from solutions.CHK import checkout_solution
 
 class TestChk():
     def test_chk(self):
+        # Edge cases
         assert checkout_solution.checkout("Da") == -1
         assert checkout_solution.checkout("") == 0
+        # Basic
         assert checkout_solution.checkout("ABCD") == 115
+        # 
         assert checkout_solution.checkout("AAAAB") == 210
         assert checkout_solution.checkout("AAAAAAB") == 280
         assert checkout_solution.checkout("BBBC") == 95
@@ -16,7 +19,14 @@ class TestChk():
         assert checkout_solution.checkout("NNNM") == 120
         assert checkout_solution.checkout("UUUUU") == 160
         assert checkout_solution.checkout("VVVVV") == 220
+        # New price
         assert checkout_solution.checkout("KKK") == 190
+        # Group buy
         assert checkout_solution.checkout("STXYZ") == 86
+        assert checkout_solution.checkout("STXYZS") == 90
+        assert checkout_solution.checkout("ST") == 40
+        assert checkout_solution.checkout("ZX") == 38
+        assert checkout_solution.checkout("ZZZZ") == 66
+
 
 
