@@ -1,4 +1,4 @@
-# Set price list
+# Set up price list and sku set
 prices = {
     'A': 50,
     'B': 30,
@@ -27,6 +27,12 @@ prices = {
     'Y': 10,
     'Z': 50
 }
+sku_set = set(prices.keys())
+
+# Set up special offers
+offers = [
+    ('A', 
+]
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -58,5 +64,6 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
