@@ -32,10 +32,19 @@ sku_set = set(prices.keys())
 # Set up special offers
 offers = [
     ("cross-bundle", 'E', 2, 'B'),
+    ("cross-bundle", 'N', 3, 'M'),
+    ("cross-bundle", 'R', 3, 'Q'),
     ("single-bundle", 'F', 3, 2),
+    ("single-bundle", 'U', 4, 3),
     ("multi-buy", 'A', 5, 200),
     ("multi-buy", 'A', 3, 130),
-    ('')
+    ("multi-buy", 'H', 10, 80),
+    ("multi-buy", 'H', 5, 45),
+    ("multi-buy", 'K', 2, 150),
+    ("multi-buy", 'P', 5, 200),
+    ("multi-buy", 'Q', 3, 80),
+    ("multi-buy", 'V', 3, 130),
+    ("multi-buy", 'V', 2, 90),
 ]
 
 # noinspection PyUnusedLocal
@@ -49,6 +58,8 @@ def checkout(skus):
     basket = {item: skus.count(item) for item in sku_set}
     
     checkout_value = 0
+    for offer_rule in offers:
+        
 
     # Special offer for item A
     checkout_value += basket['A'] // 5 * 200
@@ -68,6 +79,7 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
 
