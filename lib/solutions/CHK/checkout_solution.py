@@ -1,5 +1,4 @@
-# Set sku and price list
-sku_set = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'}
+# Set price list
 prices = {
     'A': 50,
     'B': 30,
@@ -18,11 +17,11 @@ prices = {
     'O': 10,
     'P': 50,
     'Q': 30,
-    'R': 50': 3R get one Q free      |
+    'R': 50,
     'S': 30,
     'T': 20,
-    'U': 40': 3U get one U free      |
-    'V': 50': 2V for 90, 3V for 130  |
+    'U': 40,
+    'V': 50,
     'W': 20,
     'X': 90,
     'Y': 10,
@@ -59,4 +58,5 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
