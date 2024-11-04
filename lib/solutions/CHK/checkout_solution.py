@@ -91,11 +91,3 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
-
-
-
-
-
-
-
-
