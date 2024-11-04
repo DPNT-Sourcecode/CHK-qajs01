@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
     # Check invalid input
-    sku_set = {'A', 'B', 'C', 'D', 'E'}
+    sku_set = {'A', 'B', 'C', 'D', 'E', 'F'}
     if not sku_set.issuperset(skus):
         return -1
 
@@ -16,7 +16,8 @@ def checkout(skus):
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40
+        'E': 40,
+        'F': 10
     }
     checkout_value = 0
 
@@ -31,10 +32,14 @@ def checkout(skus):
     checkout_value += basket['B'] // 2 * 45
     basket['B'] = basket['B'] % 2
 
+    # Special offer for item F
+    basket['F'] = basket['F'] % 3 + basket['F'] // 3 * 2
+
     # Calculate checkout value
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
 
