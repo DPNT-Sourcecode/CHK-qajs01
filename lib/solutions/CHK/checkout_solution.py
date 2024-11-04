@@ -59,7 +59,11 @@ def checkout(skus):
     
     checkout_value = 0
     for offer_rule in offers:
-        
+        match offer_rule[0]:
+            case "cross-bundle":
+                basket[offer_rule[3]] = max(0, basket[offer_rule[3]] - basket[offer_rule[1]] // offer_rule[2])
+            case "single-bundle":
+                basket[offer_rule[1]] = basket[offer_rule[1]] % 3 + basket['F'] // 3 * 2
 
     # Special offer for item A
     checkout_value += basket['A'] // 5 * 200
@@ -79,6 +83,7 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
 
