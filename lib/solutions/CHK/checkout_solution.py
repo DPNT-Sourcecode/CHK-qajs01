@@ -46,7 +46,7 @@ offers = [
     ("multi-buy", 'Q', 3, 80),
     ("multi-buy", 'V', 3, 130),
     ("multi-buy", 'V', 2, 90),
-    ("group-buy", ['Z', 'S', 'T', 'Y', 'X'], 3, 45),
+    ("group-buy", ['X', 'Y', 'T', 'S', 'Z'], 3, 45),
 ]
 
 # noinspection PyUnusedLocal
@@ -87,6 +87,7 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
 

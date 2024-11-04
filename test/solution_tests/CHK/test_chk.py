@@ -24,11 +24,15 @@ class TestChk():
         # New price
         assert checkout_solution.checkout("KKK") == 190
         # Group buy
-        assert checkout_solution.checkout("STXYZ") == 86
+        assert checkout_solution.checkout("STXYZ") == 82
         assert checkout_solution.checkout("STXYZS") == 90
         assert checkout_solution.checkout("ST") == 40
         assert checkout_solution.checkout("ZX") == 38
         assert checkout_solution.checkout("ZZZZ") == 66
+        assert checkout_solution.checkout("ZZZS") == 65
+        assert checkout_solution.checkout("SSSZ") == 65
+        assert checkout_solution.checkout("STXS") == 62
+
 
 
 
