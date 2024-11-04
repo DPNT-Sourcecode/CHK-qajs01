@@ -3,11 +3,14 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    # check invalid input
     sku_set = {'A', 'B', 'C', 'D', 'E'}
     if not sku_set.issuperset(skus):
         return -1
 
+    # get basket information
     basket = {item: skus.count(item) for item in sku_set}
+    # set price list
     prices = {
         'A': 50,
         'B': 30,
@@ -18,9 +21,16 @@ def checkout(skus):
     checkout_value = 0
 
     checkout_value += basket['A'] // 5 * 200
-    basket['A'] = basket['A'] // 5
+    basket['A'] = basket['A'] % 5
+    checkout_value += basket['A'] // 3 * 130
+    basket['A'] = basket['A'] % 3
+
+    basket['B'] = max(0, basket['B'] - basket['E'] // 2)
+    checkout_value += basket['B'] // 2 * 45
+    basket['B'] = basket['B'] % 2
 
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
