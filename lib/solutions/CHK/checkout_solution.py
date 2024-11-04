@@ -15,10 +15,12 @@ def checkout(skus):
         'D': 15,
         'E': 40
     }
+    checkout_value = 0
 
-    checkout_value = skus.count('A') * 50 - skus.count('A') // 3 * 20 \
-        + skus.count('B') * 30 - skus.count('B') // 2 * 15 \
-        + skus.count('C') * 20 \
-        + skus.count('D') * 15 \
-        + skus.count('E') * 40 - min(skus.count('E') // 2, skus.count('B')) * 30
+    checkout_value += basket['A'] // 5 * 200
+    basket['A'] = basket['A'] // 5
+
+    for item in basket:
+        checkout_value += basket[item] * prices[item]
     return checkout_value
+
