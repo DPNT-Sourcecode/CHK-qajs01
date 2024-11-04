@@ -8,6 +8,3 @@ def checkout(skus):
         + skus.count('C') * 20 \
         + skus.count('D') * 15
     return checkout_value
-
-
-
