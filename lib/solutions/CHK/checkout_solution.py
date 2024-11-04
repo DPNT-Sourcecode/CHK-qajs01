@@ -46,7 +46,7 @@ offers = [
     ("multi-buy", 'Q', 3, 80),
     ("multi-buy", 'V', 3, 130),
     ("multi-buy", 'V', 2, 90),
-    ("group-buy", )
+    ("group-buy", {'S', 'T', 'X', 'Y', 'Z'}, 3, 45),
 ]
 
 # noinspection PyUnusedLocal
@@ -73,6 +73,8 @@ def checkout(skus):
             case "multi-buy":
                 checkout_value += basket[item] // cond * promo
                 basket[item] = basket[item] % cond
+            case "group-buy":
+                cnt = sum()
 
     # # Special offer for item A
     # checkout_value += basket['A'] // 5 * 200
@@ -92,5 +94,6 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 

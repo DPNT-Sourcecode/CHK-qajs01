@@ -16,3 +16,5 @@ class TestChk():
         assert checkout_solution.checkout("NNNM") == 120
         assert checkout_solution.checkout("UUUUU") == 160
         assert checkout_solution.checkout("VVVVV") == 220
+        assert checkout_solution.checkout("KKK") == 190
+
