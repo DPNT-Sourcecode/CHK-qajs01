@@ -38,6 +38,7 @@ offers = [
     ("single-bundle", 'U', 4, 3),
     ("multi-buy", 'A', 5, 200),
     ("multi-buy", 'A', 3, 130),
+    ("multi-buy", 'B', 2, 45),
     ("multi-buy", 'H', 10, 80),
     ("multi-buy", 'H', 5, 45),
     ("multi-buy", 'K', 2, 150),
@@ -59,30 +60,36 @@ def checkout(skus):
     
     checkout_value = 0
     for offer_rule in offers:
+        item = item
         match offer_rule[0]:
             case "cross-bundle":
-                basket[offer_rule[3]] = max(0, basket[offer_rule[3]] - basket[offer_rule[1]] // offer_rule[2])
+                basket[offer_rule[3]] = max(0, basket[offer_rule[3]] - basket[item] // offer_rule[2])
             case "single-bundle":
-                basket[offer_rule[1]] = basket[offer_rule[1]] % 3 + basket['F'] // 3 * 2
+                basket[item] = basket[item] % offer_rule[2] + \
+                    basket[item] // offer_rule[2] * offer_rule[3]
+            case "multi-buy":
+                checkout_value += basket[item] // offer_rule[2] * offer_rule[3]
+                basket[item] = basket[item] % offer_rule[2]
 
-    # Special offer for item A
-    checkout_value += basket['A'] // 5 * 200
-    basket['A'] = basket['A'] % 5
-    checkout_value += basket['A'] // 3 * 130
-    basket['A'] = basket['A'] % 3
+    # # Special offer for item A
+    # checkout_value += basket['A'] // 5 * 200
+    # basket['A'] = basket['A'] % 5
+    # checkout_value += basket['A'] // 3 * 130
+    # basket['A'] = basket['A'] % 3
 
-    # Special offer for item B (including D and E combination)
-    basket['B'] = max(0, basket['B'] - basket['E'] // 2)
-    checkout_value += basket['B'] // 2 * 45
-    basket['B'] = basket['B'] % 2
+    # # Special offer for item B (including D and E combination)
+    # basket['B'] = max(0, basket['B'] - basket['E'] // 2)
+    # checkout_value += basket['B'] // 2 * 45
+    # basket['B'] = basket['B'] % 2
 
-    # Special offer for item F
-    basket['F'] = basket['F'] % 3 + basket['F'] // 3 * 2
+    # # Special offer for item F
+    # basket['F'] = basket['F'] % 3 + basket['F'] // 3 * 2
 
     # Calculate checkout value
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
 
