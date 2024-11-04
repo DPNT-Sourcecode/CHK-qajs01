@@ -31,7 +31,11 @@ sku_set = set(prices.keys())
 
 # Set up special offers
 offers = [
-    ('A', 
+    ("cross-bundle", 'E', 2, 'B'),
+    ("single-bundle", 'F', 3, 2),
+    ("multi-buy", 'A', 5, 200),
+    ("multi-buy", 'A', 3, 130),
+    ('')
 ]
 
 # noinspection PyUnusedLocal
@@ -64,6 +68,7 @@ def checkout(skus):
     for item in basket:
         checkout_value += basket[item] * prices[item]
     return checkout_value
+
 
 
 
